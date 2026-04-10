@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8"/>
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Gilbert Raj Vijayan — Data Scientist & ML Engineer</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;0,900;1,400&family=DM+Sans:wght@300;400;500;600&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet"/>
+<style>
+  :root{--bg:#08080f;--bg2:#0f0f1a;--card:#13131e;--border:#22223a;--accent:#7c6fff;--accent2:#ff6b8a;--accent3:#3de0a0;--gold:#f5c842;--cyan:#40d9f0;--text:#eaeaf5;--muted:#7777a0;}
+  *,*::before,*::after{box-sizing:border-box;margin:0;padding:0;}
+  html{scroll-behavior:smooth;}
+  body{font-family:'DM Sans',sans-serif;background:var(--bg);color:var(--text);overflow-x:hidden;cursor:none;}
+  .cursor{position:fixed;width:10px;height:10px;background:var(--accent);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);mix-blend-mode:screen;}
+  .cursor-ring{position:fixed;width:38px;height:38px;border:1.5px solid rgba(124,111,255,0.6);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:width 0.25s,height 0.25s;}
+  nav{position:fixed;top:0;width:100%;z-index:100;display:flex;justify-content:space-between;align-items:center;padding:1.1rem 5rem;background:rgba(8,8,15,0.92);backdrop-filter:blur(24px);border-bottom:1px solid var(--border);}
+  .nav-logo{font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .nav-links{display:flex;gap:2.5rem;list-style:none;}
+  .nav-links a{color:var(--muted);text-decoration:none;font-size:0.78rem;letter-spacing:0.12em;text-transform:uppercase;font-weight:500;font-family:'DM Mono',monospace;transition:color 0.2s;}
+  .nav-links a:hover{color:var(--text);}
+  .nav-btns{display:flex;gap:0.8rem;}
+  .nav-cta{background:var(--accent);color:#fff;text-decoration:none;padding:0.5rem 1.3rem;border-radius:6px;font-size:0.82rem;font-weight:600;transition:all 0.2s;}
+  .nav-cta:hover{opacity:0.85;transform:translateY(-1px);}
+  .nav-cv{border:1px solid var(--border);color:var(--muted);text-decoration:none;padding:0.5rem 1.3rem;border-radius:6px;font-size:0.82rem;transition:all 0.2s;}
+  .nav-cv:hover{border-color:var(--accent);color:var(--accent);}
+  .hero{min-height:100vh;display:flex;align-items:center;padding:8rem 5rem 5rem;position:relative;overflow:hidden;}
+  .hero-glow{position:absolute;inset:0;background:radial-gradient(ellipse 70% 70% at 60% 45%,rgba(124,111,255,0.1) 0%,transparent 65%),radial-gradient(ellipse 40% 50% at 15% 75%,rgba(255,107,138,0.07) 0%,transparent 55%);}
+  .hero-dots{position:absolute;inset:0;background-image:radial-gradient(circle,rgba(255,255,255,0.05) 1px,transparent 1px);background-size:40px 40px;}
+  .hero-content{position:relative;z-index:1;max-width:680px;}
+  .hero-badge{display:inline-flex;align-items:center;gap:0.5rem;background:rgba(61,224,160,0.1);border:1px solid rgba(61,224,160,0.25);color:var(--accent3);padding:0.38rem 1rem;border-radius:100px;font-size:0.75rem;font-family:'DM Mono',monospace;margin-bottom:1.8rem;animation:fadeUp 0.5s ease both;}
+  .live-dot{width:7px;height:7px;border-radius:50%;background:var(--accent3);animation:blink 2s infinite;}
+  @keyframes blink{0%,100%{opacity:1;box-shadow:0 0 6px var(--accent3)}50%{opacity:0.4;box-shadow:none}}
+  .hero h1{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,5.5vw,5.8rem);font-weight:900;line-height:1.02;letter-spacing:-2.5px;margin-bottom:0.3rem;animation:fadeUp 0.6s 0.1s ease both;}
+  .hero h1 em{font-style:italic;background:linear-gradient(135deg,var(--accent) 0%,var(--accent2) 100%);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+  .hero-tagline{font-family:'DM Mono',monospace;font-size:0.9rem;color:var(--muted);margin:1.4rem 0 1rem;animation:fadeUp 0.6s 0.2s ease both;}
+  .hero-tagline strong{color:var(--accent3);font-weight:500;}
+  .hero-desc{font-size:1.05rem;color:var(--muted);line-height:1.75;max-width:500px;margin-bottom:2.5rem;animation:fadeUp 0.6s 0.3s ease both;}
+  .hero-btns{display:flex;gap:1rem;flex-wrap:wrap;margin-bottom:3.5rem;animation:fadeUp 0.6s 0.4s ease both;}
+  .btn-p{background:linear-gradient(135deg,var(--accent),#5a4fd6);color:#fff;text-decoration:none;padding:0.9rem 2rem;border-radius:8px;font-weight:600;font-size:0.92rem;box-shadow:0 0 32px rgba(124,111,255,0.3);transition:all 0.25s;}
+  .btn-p:hover{transform:translateY(-2px);box-shadow:0 0 48px rgba(124,111,255,0.5);}
+  .btn-s{border:1px solid var(--border);color:var(--text);text-decoration:none;padding:0.9rem 2rem;border-radius:8px;font-weight:500;font-size:0.92rem;transition:all 0.25s;}
+  .btn-s:hover{border-color:var(--accent);color:var(--accent);transform:translateY(-2px);}
+  .hero-stats{display:flex;gap:3rem;animation:fadeUp 0.6s 0.5s ease both;}
+  .stat-n{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:900;line-height:1;}
+  .stat-n em{color:var(--accent);font-style:normal;}
+  .stat-l{font-size:0.72rem;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-top:0.25rem;}
+  .hero-chips{position:absolute;right:5rem;top:50%;transform:translateY(-50%);z-index:1;display:flex;flex-direction:column;gap:0.9rem;}
+  .chip{display:flex;align-items:center;gap:0.6rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.7rem 1rem;font-size:0.78rem;color:var(--muted);text-decoration:none;transition:all 0.2s;white-space:nowrap;}
+  .chip:hover{border-color:var(--accent);color:var(--text);transform:translateX(-4px);}
+  section{padding:6rem 5rem;position:relative;z-index:1;}
+  .sl{font-family:'DM Mono',monospace;font-size:0.72rem;color:var(--accent);letter-spacing:0.2em;text-transform:uppercase;margin-bottom:0.6rem;}
+  .st{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,2.8rem);font-weight:900;letter-spacing:-1px;line-height:1.1;margin-bottom:0.8rem;}
+  .ss{color:var(--muted);font-size:0.95rem;line-height:1.65;max-width:500px;margin-bottom:3rem;}
+  .div{width:48px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin:0.8rem 0 2rem;}
+  .about-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:center;}
+  .av{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:24px;aspect-ratio:4/5;max-width:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(124,111,255,0.25);}
+  .av::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15) 0%,transparent 50%);}
+  .av-init{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:rgba(255,255,255,0.9);position:relative;z-index:1;}
+  .av-name{position:relative;z-index:1;text-align:center;margin-top:0.5rem;}
+  .av-name strong{color:#fff;font-size:0.85rem;display:block;}
+  .av-name span{color:rgba(255,255,255,0.7);font-size:0.7rem;font-family:'DM Mono',monospace;}
+  .af{position:absolute;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.7rem 0.9rem;font-size:0.78rem;box-shadow:0 8px 32px rgba(0,0,0,0.5);}
+  .af1{bottom:-18px;right:-18px;}
+  .af2{top:16px;right:-24px;}
+  .af em{color:var(--accent3);font-weight:700;font-style:normal;display:block;font-size:1rem;}
+  .av-wrap{position:relative;}
+  .info-g{display:grid;grid-template-columns:1fr 1fr;gap:0.8rem;margin:1.5rem 0;}
+  .ii{background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.1rem;}
+  .il{font-size:0.65rem;font-family:'DM Mono',monospace;color:var(--muted);text-transform:uppercase;letter-spacing:0.1em;margin-bottom:0.3rem;}
+  .iv{font-size:0.82rem;font-weight:600;}
+  .edu-g{display:grid;grid-template-columns:repeat(auto-fill,minmax(300px,1fr));gap:1.2rem;}
+  .ec{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.8rem;transition:all 0.25s;position:relative;overflow:hidden;}
+  .ec::before{content:'';position:absolute;top:0;left:0;right:0;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));opacity:0;transition:opacity 0.2s;}
+  .ec:hover{border-color:var(--accent);transform:translateY(-3px);}
+  .ec:hover::before{opacity:1;}
+  .ei{font-size:1.8rem;margin-bottom:0.9rem;}
+  .ed{font-family:'Playfair Display',serif;font-size:0.98rem;font-weight:700;margin-bottom:0.35rem;line-height:1.3;}
+  .es{color:var(--accent);font-size:0.8rem;font-weight:600;margin-bottom:0.25rem;}
+  .em{color:var(--muted);font-size:0.72rem;font-family:'DM Mono',monospace;margin-bottom:0.7rem;}
+  .eg{display:inline-flex;align-items:center;gap:0.35rem;background:rgba(61,224,160,0.1);border:1px solid rgba(61,224,160,0.2);color:var(--accent3);padding:0.22rem 0.65rem;border-radius:100px;font-size:0.7rem;font-family:'DM Mono',monospace;font-weight:600;}
+  .ecc{margin-top:0.7rem;font-size:0.7rem;color:var(--muted);line-height:1.6;}
+  .pg{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:1.4rem;}
+  .pc{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:1.7rem;transition:all 0.3s;position:relative;overflow:hidden;display:flex;flex-direction:column;}
+  .pc::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(124,111,255,0.05),transparent 60%);opacity:0;transition:opacity 0.3s;pointer-events:none;}
+  .pc:hover{border-color:var(--accent);transform:translateY(-4px);box-shadow:0 20px 60px rgba(124,111,255,0.12);}
+  .pc:hover::after{opacity:1;}
+  .ph{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:1rem;}
+  .pi{font-size:2rem;}
+  .ptags{display:flex;gap:0.35rem;flex-wrap:wrap;}
+  .tag{font-family:'DM Mono',monospace;font-size:0.63rem;padding:0.2rem 0.52rem;border-radius:100px;font-weight:500;border:1px solid;}
+  .tml{color:var(--accent);border-color:rgba(124,111,255,0.3);background:rgba(124,111,255,0.08);}
+  .tnlp{color:var(--accent2);border-color:rgba(255,107,138,0.3);background:rgba(255,107,138,0.08);}
+  .tdata{color:var(--accent3);border-color:rgba(61,224,160,0.3);background:rgba(61,224,160,0.08);}
+  .tbi{color:var(--gold);border-color:rgba(245,200,66,0.3);background:rgba(245,200,66,0.08);}
+  .tiot{color:var(--cyan);border-color:rgba(64,217,240,0.3);background:rgba(64,217,240,0.08);}
+  .tai{color:#e879f9;border-color:rgba(232,121,249,0.3);background:rgba(232,121,249,0.08);}
+  .pt{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;margin-bottom:0.3rem;line-height:1.3;}
+  .pp{font-size:0.68rem;color:var(--muted);font-family:'DM Mono',monospace;margin-bottom:0.5rem;}
+  .pd{color:var(--muted);font-size:0.83rem;line-height:1.65;flex:1;}
+  .pm{display:flex;gap:0.8rem;flex-wrap:wrap;margin:0.9rem 0;padding:0.65rem;background:rgba(255,255,255,0.025);border-radius:8px;border:1px solid var(--border);}
+  .mv{font-family:'DM Mono',monospace;font-size:0.82rem;font-weight:700;color:var(--accent3);}
+  .ml{font-size:0.6rem;color:var(--muted);margin-top:0.1rem;}
+  .ptech{display:flex;gap:0.35rem;flex-wrap:wrap;margin-top:0.7rem;}
+  .tech{font-size:0.65rem;background:rgba(255,255,255,0.04);border:1px solid var(--border);border-radius:4px;padding:0.16rem 0.48rem;color:var(--muted);font-family:'DM Mono',monospace;transition:all 0.2s;}
+  .pc:hover .tech{color:var(--text);border-color:rgba(124,111,255,0.25);}
+  .pl{display:inline-flex;align-items:center;gap:0.4rem;color:var(--accent);text-decoration:none;font-size:0.78rem;font-weight:600;margin-top:0.9rem;transition:gap 0.2s;}
+  .pl:hover{gap:0.7rem;}
+  .skw{display:grid;grid-template-columns:repeat(auto-fill,minmax(200px,1fr));gap:1rem;}
+  .sg{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem;transition:all 0.2s;}
+  .sg:hover{border-color:var(--accent);transform:translateY(-2px);}
+  .sgt{font-size:0.68rem;font-family:'DM Mono',monospace;color:var(--accent);letter-spacing:0.12em;text-transform:uppercase;margin-bottom:0.8rem;}
+  .sgl{display:flex;flex-direction:column;gap:0.38rem;}
+  .sgl span{font-size:0.82rem;color:var(--text);font-weight:500;display:flex;align-items:center;gap:0.35rem;}
+  .sgl span::before{content:'▸';color:var(--accent);font-size:0.58rem;}
+  .cg{display:grid;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));gap:1rem;}
+  .cc{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:1.2rem 1.4rem;display:flex;gap:1rem;align-items:flex-start;transition:border-color 0.2s;}
+  .cc:hover{border-color:var(--gold);}
+  .cci{font-size:1.5rem;flex-shrink:0;}
+  .ccn{font-weight:600;font-size:0.83rem;margin-bottom:0.2rem;line-height:1.3;}
+  .ccis{font-size:0.7rem;color:var(--gold);font-weight:600;}
+  .ctw{display:grid;grid-template-columns:1fr 1fr;gap:5rem;align-items:center;}
+  .citems{display:flex;flex-direction:column;gap:0.85rem;}
+  .ci{display:flex;align-items:center;gap:1rem;background:var(--card);border:1px solid var(--border);border-radius:10px;padding:0.9rem 1.2rem;text-decoration:none;color:var(--text);transition:all 0.2s;}
+  .ci:hover{border-color:var(--accent);transform:translateX(4px);}
+  .cii{font-size:1.1rem;width:36px;text-align:center;flex-shrink:0;}
+  .cil{font-weight:600;font-size:0.85rem;}
+  .civ{font-size:0.7rem;color:var(--muted);font-family:'DM Mono',monospace;margin-top:0.1rem;}
+  .cv{text-align:center;}
+  .cm{font-family:'Playfair Display',serif;font-size:7rem;font-weight:900;background:linear-gradient(135deg,var(--accent),var(--accent2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;line-height:1;}
+  .cpills{display:flex;gap:0.45rem;flex-wrap:wrap;justify-content:center;margin-top:1.5rem;}
+  footer{text-align:center;padding:2rem 5rem;border-top:1px solid var(--border);color:var(--muted);font-size:0.78rem;font-family:'DM Mono',monospace;}
+  footer em{color:var(--accent);font-style:normal;}
+  @keyframes fadeUp{from{opacity:0;transform:translateY(24px)}to{opacity:1;transform:translateY(0)}}
+  .fi{opacity:0;transform:translateY(24px);transition:opacity 0.65s ease,transform 0.65s ease;}
+  .fi.visible{opacity:1;transform:translateY(0);}
+  ::-webkit-scrollbar{width:5px;}::-webkit-scrollbar-track{background:var(--bg);}::-webkit-scrollbar-thumb{background:var(--border);border-radius:3px;}
+  @media(max-width:900px){nav{padding:1rem 1.5rem;}.nav-links,.nav-cv,.hero-chips{display:none;}section{padding:4rem 1.5rem;}.hero{padding:6rem 1.5rem 3rem;}.about-wrap,.ctw{grid-template-columns:1fr;gap:2rem;}.hero-stats{gap:1.5rem;}.hero h1{font-size:2.8rem;}}
+</style>
+</head>
+<body>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+
+<nav>
+  <div class="nav-logo">Gilbert Raj Vijayan</div>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+  <div class="nav-btns">
+    <a href="mailto:gilbertrajvijayan@gmail.com" class="nav-cv">Contact Me</a>
+    <a href="https://github.com/gilbertrajvijayan" target="_blank" class="nav-cta">GitHub ↗</a>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section class="hero" id="hero">
+  <div class="hero-glow"></div><div class="hero-dots"></div>
+  <div class="hero-content">
+    <div class="hero-badge"><div class="live-dot"></div>Open to Opportunities · Denton, TX</div>
+    <h1>Gilbert Raj<br/><em>Vijayan</em></h1>
+    <p class="hero-tagline">Data Scientist · ML Engineer · <strong>NLP Researcher</strong></p>
+    <p class="hero-desc">Dual master's in Information Systems (UNT, TX) & Data Science (VIT, India). Building intelligent ML pipelines, NLP systems, and analytics dashboards that turn complex data into strategic decisions.</p>
+    <div class="hero-btns">
+      <a href="#projects" class="btn-p">Explore My Work</a>
+      <a href="#contact" class="btn-s">Get In Touch →</a>
+    </div>
+    <div class="hero-stats">
+      <div><div class="stat-n">7<em>+</em></div><div class="stat-l">Projects</div></div>
+      <div><div class="stat-n">3.9<em>/4</em></div><div class="stat-l">MS GPA</div></div>
+      <div><div class="stat-n">95<em>%</em></div><div class="stat-l">Best Accuracy</div></div>
+      <div><div class="stat-n">25<em>k</em></div><div class="stat-l">Records Analyzed</div></div>
+    </div>
+  </div>
+  <div class="hero-chips">
+    <a href="mailto:gilbertrajvijayan@gmail.com" class="chip">📧 gilbertrajvijayan@gmail.com</a>
+    <a href="tel:+19405976430" class="chip">📞 +1 (940) 597-6430</a>
+    <a href="https://linkedin.com/in/gilbert-v-a32063202" target="_blank" class="chip">💼 linkedin.com/in/gilbert-v</a>
+    <a href="https://github.com/gilbertrajvijayan" target="_blank" class="chip">🐙 github.com/gilbertrajvijayan</a>
+    <div class="chip">📍 Denton, TX · Open to Remote</div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about" style="background:var(--bg2)">
+  <div class="about-wrap">
+    <div class="av-wrap fi">
+      <div class="av">
+        <div class="av-init">GRV</div>
+        <div class="av-name"><strong>Gilbert Raj Vijayan</strong><span>Data Scientist & ML Engineer</span></div>
+      </div>
+      <div class="af af1"><em>3.9</em>MS GPA @ UNT</div>
+      <div class="af af2"><em>9.1</em>GPA @ VIT</div>
+    </div>
+    <div class="fi">
+      <div class="sl">About Me</div>
+      <h2 class="st">Where Math Meets Machine Intelligence</h2>
+      <div class="div"></div>
+      <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:0.95rem">I'm a data science professional with a strong mathematical foundation and dual master's degrees — <strong style="color:var(--text)">MS in Information Systems & Technologies (University of North Texas, TX)</strong> and <strong style="color:var(--text)">MS in Data Science (VIT, India)</strong>.</p>
+      <p style="color:var(--muted);line-height:1.8;margin-bottom:1rem;font-size:0.95rem">My work spans healthcare diagnostics, NLP with transformers, logistics optimization with PySpark, IoT-driven inventory systems, and ethical AI — each built with end-to-end rigor from raw data to deployed solution.</p>
+      <p style="color:var(--muted);line-height:1.8;margin-bottom:1.5rem;font-size:0.95rem">Skilled in machine learning, deep learning, NLP, and LLMs. Experienced building predictive solutions and dashboards that transform complex data into actionable intelligence for strategic decision-making.</p>
+      <div class="info-g">
+        <div class="ii"><div class="il">Location</div><div class="iv">Denton, TX, USA</div></div>
+        <div class="ii"><div class="il">Phone</div><div class="iv">+1 (940) 597-6430</div></div>
+        <div class="ii"><div class="il">Email</div><div class="iv" style="font-size:0.72rem">gilbertrajvijayan@gmail.com</div></div>
+        <div class="ii"><div class="il">Status</div><div class="iv" style="color:var(--accent3)">Open to Opportunities ✓</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- EDUCATION -->
+<section id="education">
+  <div class="sl fi">Academic Background</div>
+  <h2 class="st fi">Education</h2>
+  <div class="div fi"></div>
+  <div class="edu-g">
+    <div class="ec fi">
+      <div class="ei">🎓</div>
+      <div class="ed">MS — Information Systems & Technologies</div>
+      <div class="es">University of North Texas, Denton, TX</div>
+      <div class="em">Aug 2024 – May 2026</div>
+      <div class="eg">⭐ GPA: 3.9 / 4.0</div>
+      <div class="ecc">Big Data Analytics · Business Intelligence · Data Visualization · Database Systems · Programming for Analytics · Information Security · Web Systems</div>
+    </div>
+    <div class="ec fi">
+      <div class="ei">🎓</div>
+      <div class="ed">MS — Data Science</div>
+      <div class="es">Vellore Institute of Technology, India</div>
+      <div class="em">Sep 2022 – May 2024</div>
+      <div class="eg">⭐ GPA: 9.1 / 10</div>
+      <div class="ecc">Machine Learning · Deep Learning · NLP · Statistical Modeling · Time Series Forecasting · Predictive Analytics · Optimization Techniques</div>
+    </div>
+    <div class="ec fi">
+      <div class="ei">🔢</div>
+      <div class="ed">BS — Mathematics</div>
+      <div class="es">Bishop Heber College, Tiruchirappalli, India</div>
+      <div class="em">June 2019 – May 2022</div>
+      <div class="eg">⭐ GPA: 9.4 / 10</div>
+      <div class="ecc">Linear Algebra · Mathematical Statistics · Numerical Methods · Discrete Mathematics · Operations Research · Scientific Computing</div>
+    </div>
+  </div>
+</section>
+
+<!-- PROJECTS -->
+<section id="projects" style="background:var(--bg2)">
+  <div class="sl fi">Featured Work</div>
+  <h2 class="st fi">Projects</h2>
+  <div class="div fi"></div>
+  <p class="ss fi">End-to-end ML systems, NLP pipelines, and analytics solutions — from raw data to deployed product.</p>
+  <div class="pg">
+    <div class="pc fi">
+      <div class="ph"><div class="pi">🚚</div><div class="ptags"><span class="tag tml">ML</span><span class="tag tnlp">LLM</span><span class="tag tdata">PySpark</span></div></div>
+      <div class="pt">Delivery Logistics Predictive Analytics</div>
+      <div class="pp">Aug 2025 – Dec 2025</div>
+      <div class="pd">End-to-end analytics pipeline on 25,000+ logistics records. Built 5 ML models: delay prediction, delivery time/cost regression, K-Means segmentation, and an LLM-powered delivery assistant for real-time operational insights.</div>
+      <div class="pm"><div><div class="mv">~95%</div><div class="ml">Accuracy</div></div><div><div class="mv">0.958</div><div class="ml">AUC Score</div></div><div><div class="mv">25K+</div><div class="ml">Records</div></div><div><div class="mv">5</div><div class="ml">Models</div></div></div>
+      <div class="ptech"><span class="tech">PySpark</span><span class="tech">MLlib</span><span class="tech">Random Forest</span><span class="tech">XGBoost</span><span class="tech">K-Means</span><span class="tech">LLM</span></div>
+      <a href="https://github.com/gilbertrajvijayan" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="pc fi">
+      <div class="ph"><div class="pi">❤️</div><div class="ptags"><span class="tag tml">Deep Learning</span><span class="tag tai">Flask App</span></div></div>
+      <div class="pt">Automated Cardiovascular Disease Diagnosis</div>
+      <div class="pp">Jan 2024 – May 2024</div>
+      <div class="pd">Deep learning + ensemble models for CVD classification. Used Honey Badger Optimization for feature selection and Bayesian hyperparameter tuning. Deployed as a Flask web app with secure authentication for clinical decision support.</div>
+      <div class="pm"><div><div class="mv">100%</div><div class="ml">Test Accuracy</div></div><div><div class="mv">HBO</div><div class="ml">Feature Select</div></div><div><div class="mv">7</div><div class="ml">Algorithms</div></div></div>
+      <div class="ptech"><span class="tech">TensorFlow</span><span class="tech">Keras</span><span class="tech">Flask</span><span class="tech">SQLite</span><span class="tech">LightGBM</span><span class="tech">Bayesian Opt</span></div>
+      <a href="https://github.com/gilbertrajvijayan" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="pc fi">
+      <div class="ph"><div class="pi">📄</div><div class="ptags"><span class="tag tnlp">NLP</span><span class="tag tml">Transformers</span></div></div>
+      <div class="pt">Resume Parser using RoBERTa & Spacy</div>
+      <div class="pp">Mar 2023 – Apr 2023</div>
+      <div class="pd">NLP pipeline using RoBERTa + Spacy for Named Entity Recognition on semi-structured resume data. Applied text classification, feature extraction, and fine-tuning. Presented at the 23rd SET Conference.</div>
+      <div class="pm"><div><div class="mv">57.59</div><div class="ml">F1 Score</div></div><div><div class="mv">200</div><div class="ml">Resumes</div></div><div><div class="mv">NER</div><div class="ml">Technique</div></div></div>
+      <div class="ptech"><span class="tech">RoBERTa</span><span class="tech">Spacy</span><span class="tech">NER</span><span class="tech">Python</span><span class="tech">PyMuPDF</span></div>
+      <a href="https://github.com/gilbertrajvijayan" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="pc fi">
+      <div class="ph"><div class="pi">📦</div><div class="ptags"><span class="tag tiot">IoT</span><span class="tag tdata">Predictive</span></div></div>
+      <div class="pt">Real-Time Inventory Optimization (IoT + ML)</div>
+      <div class="pp">Fall 2025</div>
+      <div class="pd">IoT-driven inventory framework using ARIMA/SARIMA demand forecasting, K-Means SKU segmentation, XGBoost stockout prediction, and interactive Tableau BI dashboards. Projects 25–40% reduction in stockouts.</div>
+      <div class="pm"><div><div class="mv">25-40%</div><div class="ml">Fewer Stockouts</div></div><div><div class="mv">10-20%</div><div class="ml">Cost Reduction</div></div></div>
+      <div class="ptech"><span class="tech">PySpark</span><span class="tech">ARIMA</span><span class="tech">SARIMA</span><span class="tech">XGBoost</span><span class="tech">Tableau</span><span class="tech">IoT</span></div>
+      <a href="https://github.com/gilbertrajvijayan" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="pc fi">
+      <div class="ph"><div class="pi">🎓</div><div class="ptags"><span class="tag tml">ML</span><span class="tag tdata">EDA</span></div></div>
+      <div class="pt">Student Academic Performance Prediction</div>
+      <div class="pp">Aug 2023 – Dec 2023</div>
+      <div class="pd">Collected and analyzed academic datasets to predict student performance. Built Logistic Regression, Random Forest, and XGBoost models using Python and SQL to support data-driven academic interventions.</div>
+      <div class="ptech"><span class="tech">Python</span><span class="tech">Scikit-learn</span><span class="tech">XGBoost</span><span class="tech">SQL</span><span class="tech">Pandas</span><span class="tech">Matplotlib</span></div>
+      <a href="https://github.com/gilbertrajvijayan" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="pc fi">
+      <div class="ph"><div class="pi">🏅</div><div class="ptags"><span class="tag tbi">Tableau</span><span class="tag tdata">Analytics</span></div></div>
+      <div class="pt">Olympic Data Analytics using Tableau</div>
+      <div class="pp">Aug 2024 – Dec 2024</div>
+      <div class="pd">Interactive Tableau dashboards analyzing Olympic data (2000–2016), revealing medal trends, athlete demographics, and national performance patterns. Presented findings to academic stakeholders.</div>
+      <div class="ptech"><span class="tech">Tableau</span><span class="tech">Python</span><span class="tech">Pandas</span><span class="tech">EDA</span><span class="tech">Data Storytelling</span></div>
+      <a href="https://github.com/gilbertrajvijayan" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+    <div class="pc fi">
+      <div class="ph"><div class="pi">🤖</div><div class="ptags"><span class="tag tai">AI Ethics</span><span class="tag tdata">Research</span></div></div>
+      <div class="pt">Replika AI — Ethical Analysis</div>
+      <div class="pp">Research Project</div>
+      <div class="pd">In-depth ethical analysis of the Replika AI companion app — examining user privacy, psychological impact, data governance, and broader societal implications of human-AI relationships.</div>
+      <div class="ptech"><span class="tech">AI Ethics</span><span class="tech">Research</span><span class="tech">Human-AI Interaction</span><span class="tech">Data Privacy</span></div>
+      <a href="https://github.com/gilbertrajvijayan" target="_blank" class="pl">View on GitHub →</a>
+    </div>
+  </div>
+</section>
+
+<!-- SKILLS -->
+<section id="skills">
+  <div class="sl fi">Technical Expertise</div>
+  <h2 class="st fi">Skills & Tools</h2>
+  <div class="div fi"></div>
+  <div class="skw">
+    <div class="sg fi"><div class="sgt">🐍 Languages</div><div class="sgl"><span>Python</span><span>SQL</span><span>R</span><span>PySpark</span><span>C/C++</span><span>Octave</span></div></div>
+    <div class="sg fi"><div class="sgt">🤖 Machine Learning</div><div class="sgl"><span>Scikit-learn</span><span>XGBoost</span><span>LightGBM</span><span>Random Forest</span><span>Ensemble Methods</span></div></div>
+    <div class="sg fi"><div class="sgt">🧠 Deep Learning</div><div class="sgl"><span>TensorFlow</span><span>Keras</span><span>Bayesian Optimization</span><span>Feature Engineering</span><span>Predictive Modeling</span></div></div>
+    <div class="sg fi"><div class="sgt">📝 NLP & LLMs</div><div class="sgl"><span>Spacy</span><span>Transformers</span><span>RoBERTa</span><span>BERT</span><span>NER</span><span>LLMs</span></div></div>
+    <div class="sg fi"><div class="sgt">⚡ Big Data</div><div class="sgl"><span>PySpark</span><span>MLlib</span><span>BigQuery</span><span>ETL/ELT Pipelines</span><span>Distributed Computing</span></div></div>
+    <div class="sg fi"><div class="sgt">📊 Analytics & BI</div><div class="sgl"><span>Tableau</span><span>Power BI</span><span>Pandas</span><span>NumPy</span><span>Matplotlib</span><span>Seaborn</span></div></div>
+    <div class="sg fi"><div class="sgt">🗄️ Databases</div><div class="sgl"><span>MySQL</span><span>SQL Server</span><span>SQLite</span><span>BigQuery</span><span>Data Warehousing</span></div></div>
+    <div class="sg fi"><div class="sgt">🌐 Web & Tools</div><div class="sgl"><span>Flask</span><span>Git / GitHub</span><span>Google Colab</span><span>Jupyter</span><span>Anaconda</span></div></div>
+    <div class="sg fi"><div class="sgt">📐 Mathematics</div><div class="sgl"><span>Linear Algebra</span><span>Probability & Stats</span><span>Time Series</span><span>Optimization</span><span>Multivariate Analysis</span></div></div>
+  </div>
+</section>
+
+<!-- CERTIFICATIONS -->
+<section style="background:var(--bg2)">
+  <div class="sl fi">Credentials</div>
+  <h2 class="st fi">Certifications</h2>
+  <div class="div fi"></div>
+  <div class="cg">
+    <div class="cc fi"><div class="cci">📊</div><div><div class="ccn">Google Data Analytics Professional Certificate</div><div class="ccis">Google · 8-Course · SQL, R, Tableau, Capstone</div></div></div>
+    <div class="cc fi"><div class="cci">📈</div><div><div class="ccn">Tableau 2022 A–Z: Hands-On Training</div><div class="ccis">Udemy · Data Science Visualization Track</div></div></div>
+    <div class="cc fi"><div class="cci">🏥</div><div><div class="ccn">Data-Driven Approach in Biology & Healthcare</div><div class="ccis">SQL · R · Python · Healthcare Analytics</div></div></div>
+    <div class="cc fi"><div class="cci">🤖</div><div><div class="ccn">Automation Anywhere A2019 — Essential Level</div><div class="ccis">Robotic Process Automation (RPA)</div></div></div>
+    <div class="cc fi"><div class="cci">🔐</div><div><div class="ccn">Introduction to Cybersecurity</div><div class="ccis">Cisco · Security Fundamentals & Risk Mitigation</div></div></div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="ctw">
+    <div class="fi">
+      <div class="sl">Get In Touch</div>
+      <h2 class="st">Let's Build Something Great</h2>
+      <div class="div"></div>
+      <p style="color:var(--muted);line-height:1.75;margin-bottom:2rem;font-size:0.95rem">I'm actively seeking Data Science, ML Engineering, and Analytics roles. Whether you need someone to build intelligent ML pipelines, design BI dashboards, or dive deep into your data — let's connect!</p>
+      <div class="citems">
+        <a href="mailto:gilbertrajvijayan@gmail.com" class="ci"><div class="cii">📧</div><div><div class="cil">Email</div><div class="civ">gilbertrajvijayan@gmail.com</div></div></a>
+        <a href="tel:+19405976430" class="ci"><div class="cii">📞</div><div><div class="cil">Phone</div><div class="civ">+1 (940) 597-6430</div></div></a>
+        <a href="https://linkedin.com/in/gilbert-v-a32063202" target="_blank" class="ci"><div class="cii">💼</div><div><div class="cil">LinkedIn</div><div class="civ">linkedin.com/in/gilbert-v-a32063202</div></div></a>
+        <a href="https://github.com/gilbertrajvijayan" target="_blank" class="ci"><div class="cii">🐙</div><div><div class="cil">GitHub</div><div class="civ">github.com/gilbertrajvijayan</div></div></a>
+        <div class="ci" style="cursor:default"><div class="cii">📍</div><div><div class="cil">Location</div><div class="civ">Denton, TX · Open to Remote & Relocation</div></div></div>
+      </div>
+    </div>
+    <div class="cv fi">
+      <div class="cm">GRV</div>
+      <div style="color:var(--muted);font-size:0.82rem;font-family:'DM Mono',monospace;margin-top:0.8rem;">Data Scientist & ML Engineer</div>
+      <div class="cpills">
+        <span class="tag tml" style="font-size:0.76rem;padding:0.32rem 0.75rem">Machine Learning</span>
+        <span class="tag tnlp" style="font-size:0.76rem;padding:0.32rem 0.75rem">NLP</span>
+        <span class="tag tdata" style="font-size:0.76rem;padding:0.32rem 0.75rem">Big Data</span>
+        <span class="tag tbi" style="font-size:0.76rem;padding:0.32rem 0.75rem">Tableau</span>
+        <span class="tag tiot" style="font-size:0.76rem;padding:0.32rem 0.75rem">Deep Learning</span>
+        <span class="tag tai" style="font-size:0.76rem;padding:0.32rem 0.75rem">LLMs</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<footer><p>© 2025 <em>Gilbert Raj Vijayan</em> · Data Scientist & ML Engineer · Denton, TX</p></footer>
+
+<script>
+  const cur=document.getElementById('cur'),ring=document.getElementById('ring');
+  let mx=0,my=0,rx=0,ry=0;
+  document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px';});
+  (function a(){rx+=(mx-rx)*0.12;ry+=(my-ry)*0.12;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(a);})();
+  document.querySelectorAll('a,button').forEach(el=>{el.addEventListener('mouseenter',()=>{ring.style.width='52px';ring.style.height='52px';});el.addEventListener('mouseleave',()=>{ring.style.width='38px';ring.style.height='38px';});});
+  const obs=new IntersectionObserver(e=>e.forEach(x=>{if(x.isIntersecting)x.target.classList.add('visible');}),{threshold:0.08});
+  document.querySelectorAll('.fi').forEach(el=>obs.observe(el));
+</script>
+</body>
+</html>
