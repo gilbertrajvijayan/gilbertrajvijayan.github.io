@@ -52,7 +52,7 @@
   .ss{color:var(--muted);font-size:0.95rem;line-height:1.65;max-width:500px;margin-bottom:3rem;}
   .div{width:48px;height:3px;background:linear-gradient(90deg,var(--accent),var(--accent2));border-radius:2px;margin:0.8rem 0 2rem;}
   .about-wrap{display:grid;grid-template-columns:1fr 1.5fr;gap:5rem;align-items:center;}
-  .av{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:24px;aspect-ratio:4/5;max-width:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(124,111,255,0.25);}
+  .av{background:linear-gradient(135deg,var(--accent),var(--accent2));border-radius:24px;aspect-ratio:1/1;max-width:280px;display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;box-shadow:0 32px 80px rgba(124,111,255,0.25);}
   .av::before{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(255,255,255,0.15) 0%,transparent 50%);}
   .av-init{font-family:'Playfair Display',serif;font-size:5rem;font-weight:900;color:rgba(255,255,255,0.9);position:relative;z-index:1;}
   .av-name{position:relative;z-index:1;text-align:center;margin-top:0.5rem;}
@@ -188,7 +188,10 @@
   <div class="about-wrap">
     <div class="av-wrap fi">
       <div class="av">
-        <div class="av-init">GRV</div>
+        <img src="photo.jpg" alt="Gilbert Raj Vijayan" 
+style="width:100%;height:100%;object-fit:cover;
+object-position:center top;
+position:relative;z-index:1;border-radius:24px;"/>
         <div class="av-name"><strong>Gilbert Raj Vijayan</strong><span>Data Scientist & ML Engineer</span></div>
       </div>
       <div class="af af1"><em>3.9</em>MS GPA @ UNT</div>
